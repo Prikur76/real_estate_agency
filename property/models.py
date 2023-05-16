@@ -50,8 +50,10 @@ class Flat(models.Model):
         'Новостройка',
         null=True,
         blank=True,
-        db_index=True
-    )
+        db_index=True)
+
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
