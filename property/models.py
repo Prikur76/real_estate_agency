@@ -52,6 +52,13 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
+    like = models.ManyToManyField(
+        User,
+        verbose_name='Кто лайкнул',
+        related_name='flat_likes',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ['-created_at']
