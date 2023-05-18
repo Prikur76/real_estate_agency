@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         Flat.objects.all().update(new_building=None)
 
     dependencies = [
-        ('property', '0003_auto_20230518_1329'),
+        ('property', '0003_change_pure_numbers'),
     ]
 
     operations = [

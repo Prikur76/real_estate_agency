@@ -26,9 +26,8 @@ class Migration(migrations.Migration):
 
     def move_backward(apps, schema_editor):
         Flat = apps.get_model('property', 'Flat')
-        for flat in Flat.objects.all():
-            flat.owners_phonenumber = flat.owner_pure_phone
-            flat.save()
+        Flat.objects.all().update(owner_pure_phone=None)
+
 
     dependencies = [
         ('property', '0002_auto_20230518_1329'),
