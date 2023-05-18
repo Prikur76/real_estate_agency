@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
+    # owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     owner_pure_phone = PhoneNumberField(
         'Нормализованный номер владельца',
         region='RU',
@@ -67,7 +67,7 @@ class Flat(models.Model):
     )
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
