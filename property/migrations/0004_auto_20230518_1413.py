@@ -11,10 +11,14 @@ class Migration(migrations.Migration):
         Flat.objects.filter(construction_year__lt=2015) \
             .update(new_building=False)
 
+    def move_backward(apps, schema_editor):
+        Flat = apps.get_model('property', 'Flat')
+        Flat.objects.all().update(new_building=None)
+
     dependencies = [
         ('property', '0003_auto_20230518_1329'),
     ]
 
     operations = [
-        migrations.RunPython(fetch_new_building),
+        migrations.RunPython(fetch_new_building, move_backward),
     ]
