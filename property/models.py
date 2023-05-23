@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -101,7 +103,8 @@ class Owner(models.Model):
     flats = models.ManyToManyField(
         Flat,
         verbose_name='Квартиры в собственности',
-        related_name='owners')
+        related_name='owned_by'
+    )
 
     def __str__(self):
         return self.owner
