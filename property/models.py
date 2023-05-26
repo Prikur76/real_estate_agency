@@ -1,4 +1,3 @@
-from typing import Tuple
 
 from django.db import models
 from django.utils import timezone
@@ -25,9 +24,10 @@ class Flat(models.Model):
                                      help_text='Чертаново Южное')
     address = models.TextField('Адрес квартиры',
                                help_text='ул. Подольских курсантов д.5 кв.4')
-    floor = models.CharField('Этаж',
-                             max_length=3,
-                             help_text='Первый этаж, последний этаж, пятый этаж')
+    floor = models.CharField(
+        'Этаж',
+        max_length=3,
+        help_text='Первый этаж, последний этаж, пятый этаж')
 
     rooms_number = models.IntegerField('Количество комнат',
                                        db_index=True)
@@ -65,12 +65,12 @@ class Complaint(models.Model):
                                         verbose_name='Кто жаловался',
                                         on_delete=models.CASCADE,
                                         related_name='users')
-    address = models.ForeignKey(Flat,
-                                verbose_name='Квартира, на которую пожаловались',
-                                on_delete=models.CASCADE,
-                                related_name='addresses')
+    address = models.ForeignKey(
+        Flat,
+        verbose_name='Квартира, на которую пожаловались',
+        on_delete=models.CASCADE,
+        related_name='addresses')
     contents = models.TextField('Текст обращения')
-
 
     def __str__(self):
         return f'{self.complainterator}, {self.address}'
