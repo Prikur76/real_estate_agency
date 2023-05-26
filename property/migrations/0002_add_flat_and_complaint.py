@@ -41,15 +41,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='flat',
             name='living_area',
-            field=models.IntegerField(blank=True, db_index=True, null=True, verbose_name='количество жилых кв.метров'),
+            field=models.IntegerField(blank=True, db_index=True, null=True, verbose_name='жилая площадь (кв.м)'),
         ),
         migrations.CreateModel(
             name='Complaint',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('contents', models.TextField(verbose_name='Текст жалобы')),
-                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='adress_complaints', to='property.Flat', verbose_name='Квартира, на которую пожаловались')),
-                ('complainterator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_complaints', to=settings.AUTH_USER_MODEL, verbose_name='Кто жаловался')),
+                ('contents', models.TextField(verbose_name='Текст обращения')),
+                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='addresses', to='property.Flat', verbose_name='Квартира, на которую пожаловались')),
+                ('complainterator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='complainterators', to=settings.AUTH_USER_MODEL, verbose_name='Кто жаловался')),
             ],
         ),
     ]
