@@ -23,11 +23,12 @@ class Migration(migrations.Migration):
             page = flats_paginator.page(page_number)
 
             for item in page.object_list:
-                owners.get_or_create(
+                owner, created = owners.get_or_create(
                     owner=item.owner,
                     phone=item.owners_phonenumber,
                     pure_phone=item.owner_pure_phone,
-                )[0].flats.add(item)
+                )
+                owner.flats.add(item)
 
         num_queries()
 

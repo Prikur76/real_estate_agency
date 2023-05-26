@@ -64,12 +64,12 @@ class Complaint(models.Model):
     complainterator = models.ForeignKey(User,
                                         verbose_name='Кто жаловался',
                                         on_delete=models.CASCADE,
-                                        related_name='complainterators')
+                                        related_name='complaints')
     address = models.ForeignKey(
         Flat,
         verbose_name='Квартира, на которую пожаловались',
         on_delete=models.CASCADE,
-        related_name='addresses')
+        related_name='complaints')
     contents = models.TextField('Текст обращения')
 
     def __str__(self):

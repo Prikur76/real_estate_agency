@@ -48,8 +48,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('contents', models.TextField(verbose_name='Текст обращения')),
-                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='addresses', to='property.Flat', verbose_name='Квартира, на которую пожаловались')),
-                ('complainterator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='complainterators', to=settings.AUTH_USER_MODEL, verbose_name='Кто жаловался')),
+                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='complaints', to='property.Flat', verbose_name='Квартира, на которую пожаловались')),
+                ('complainterator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='complaints', to=settings.AUTH_USER_MODEL, verbose_name='Кто жаловался')),
             ],
         ),
     ]
