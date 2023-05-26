@@ -64,7 +64,7 @@ class Complaint(models.Model):
     complainterator = models.ForeignKey(User,
                                         verbose_name='Кто жаловался',
                                         on_delete=models.CASCADE,
-                                        related_name='users')
+                                        related_name='complainterators')
     address = models.ForeignKey(
         Flat,
         verbose_name='Квартира, на которую пожаловались',
