@@ -15,10 +15,10 @@ class Flat(models.Model):
     price = models.IntegerField('Цена квартиры',
                                 db_index=True)
 
-    town = models.CharField('Город',
+    town = models.CharField('Город, где находится квартира',
                             max_length=50,
                             db_index=True)
-    town_district = models.CharField('Район города',
+    town_district = models.CharField('Район города, где находится квартира',
                                      max_length=50,
                                      blank=True,
                                      help_text='Чертаново Южное')
@@ -29,7 +29,7 @@ class Flat(models.Model):
         max_length=3,
         help_text='Первый этаж, последний этаж, пятый этаж')
 
-    rooms_number = models.IntegerField('Количество комнат',
+    rooms_number = models.IntegerField('Количество комнат в квартире',
                                        db_index=True)
     living_area = models.IntegerField('жилая площадь (кв.м)',
                                       null=True,
@@ -38,7 +38,7 @@ class Flat(models.Model):
 
     has_balcony = models.NullBooleanField('Наличие балкона',
                                           db_index=True)
-    active = models.BooleanField('Объявление активно',
+    active = models.BooleanField('Активно-ли объявление',
                                  db_index=True)
     construction_year = models.IntegerField('Год постройки здания',
                                             null=True,
@@ -80,7 +80,7 @@ class Owner(models.Model):
     owner = models.CharField('ФИО владельца',
                              max_length=250,
                              db_index=True)
-    phonenumber = models.CharField('Телефон',
+    phone = models.CharField('Телефон',
                                    max_length=20,
                                    db_index=True)
     pure_phone = PhoneNumberField('Телефон (нормализованный)',
